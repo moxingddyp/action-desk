@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+<key>CFBundleIdentifier</key><string>local.cxy.actiondesk.opensource</string>
+<key>CFBundleExecutable</key><string>CXYActionDesk</string>
+<key>CFBundleName</key><string>CXY 行动台 OSS</string>
+<key>CFBundleDisplayName</key><string>CXY 行动台 OSS</string>
+<key>CFBundlePackageType</key><string>APPL</string>
+<key>CFBundleVersion</key><string>15</string>
+<key>CFBundleInfoDictionaryVersion</key><string>6.0</string>
+<key>CFBundleSupportedPlatforms</key><array><string>MacOSX</string></array>
+<key>CFBundleShortVersionString</key><string>1.0.0</string>
+<key>LSMinimumSystemVersion</key><string>27.0</string>
+<key>LSUIElement</key><true/>
+<key>NSHumanReadableCopyright</key><string>CXY</string>
+<key>CFBundleURLTypes</key><array><dict>
+<key>CFBundleURLName</key><string>local.cxy.actiondesk.opensource.navigation</string>
+<key>CFBundleURLSchemes</key><array><string>cxy-actiondesk-oss</string></array>
+</dict></array>
+</dict></plist>
