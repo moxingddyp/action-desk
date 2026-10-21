@@ -2,6 +2,8 @@
 
 [English](README.md) · [简体中文](README.zh-CN.md)
 
+![Action Desk app icon](native/Assets.xcassets/AppIcon.appiconset/icon-128.png)
+
 Keep your existing work plan on your macOS desktop, then open the corresponding Codex thread directly from an item.
 
 Action Desk provides ring, list, and calendar views. It reads your Markdown work plan instead of creating another task database.
@@ -18,9 +20,17 @@ Action Desk provides ring, list, and calendar views. It reads your Markdown work
 
 The categories are Priority, In Progress, Ready, and Conditional. The last three are mutually exclusive; Priority is an additional flag.
 
-## Environment
+## Download and Install (No Xcode Required)
 
-The project has been built and tested offline with:
+Local DMG and ZIP packages for version 1.0.1 are prepared for review and **have not been uploaded**. The GitHub repository currently provides source only. Approved packages will be published under [Releases](https://github.com/moxingddyp/action-desk/releases).
+
+For Apple Silicon Macs running macOS 27.0 or later: open the DMG and drag the app into Applications, or extract the ZIP and move the app there. Follow the [bilingual installation guide](docs/INSTALL.md) to configure your existing plan and add the desktop widget. End users do not need Xcode, Python, or Homebrew.
+
+The current review build is ad-hoc signed, not Developer ID–signed or Apple-notarized. macOS may block it after an internet download; see the installation guide for its status and Apple's official opening procedure. Internet download, installation, and WidgetKit loading on another Mac have not yet been verified.
+
+## Build from Source (Developers)
+
+Xcode is needed only to compile or modify the source. Build and offline-test environment:
 
 - An Apple Silicon Mac.
 - macOS 27.0.1.
@@ -28,8 +38,6 @@ The project has been built and tested offline with:
 - A deployment target of macOS 27.0, arm64.
 
 Other operating systems, Intel Macs, and Xcode versions have not been verified. Users are responsible for preparing their own environment.
-
-## Build
 
 Complete Xcode's first launch and install its macOS development components. From the repository root, run:
 
@@ -39,14 +47,14 @@ DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer sh native/build.sh
 
 The output is `CXY Action Desk OSS.app`. The script builds and locally signs the application; it does not install or launch it.
 
-This is a source distribution. A Developer ID–signed and Apple-notarized installer is not currently provided.
+Use `sh native/package.sh APP_PATH OUTPUT_DIRECTORY` to package a built app as DMG and ZIP files. This script does not install, launch, notarize, or upload the app. The original vector-drawn icon includes multi-size assets and its generation script in the source.
 
 ## Configure and Use
 
 1. Copy the example work plan, project index, and thread mapping from `examples/` into your own data directory.
 2. Configure the data directory and your main Codex thread ID in `~/Library/Application Support/CXY Action Desk OSS/config.json`.
 3. Replace the example thread IDs with Codex threads you can access.
-4. Install and open the application you built.
+4. Install and open the downloaded or self-built application.
 5. Add “CXY行动台OSS” through macOS Edit Widgets.
 
 Items without a mapped work thread fall back to the main thread. Example thread IDs are blocked from actual navigation.
@@ -81,6 +89,7 @@ A complete first-time WidgetKit installation, permission, and real-thread naviga
 
 ## Documentation
 
+- [Download and installation](docs/INSTALL.md)
 - [Data format](docs/DATA-FORMAT.md)
 - [Environment and verification](docs/ACCEPTANCE.md)
 - [Components](THIRD-PARTY.md)

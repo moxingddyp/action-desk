@@ -17,6 +17,9 @@ fi
 /usr/bin/xcrun xcodebuild -quiet -project "$source_dir/CXYActionDesk.xcodeproj" -scheme CXYActionDesk -configuration Release -destination 'generic/platform=macOS' -derivedDataPath "$cache/DerivedData" CODE_SIGNING_ALLOWED=NO build
 /usr/bin/ditto "$cache/DerivedData/Build/Products/Release/CXY Action Desk OSS.app" "$app"
 test -f "$extension/Contents/Resources/Metadata.appintents/extract.actionsdata"
+# Remove local debug-map paths before sealing the redistributable app.
+/usr/bin/strip -S "$app/Contents/MacOS/CXYActionDesk"
+/usr/bin/strip -S "$extension/Contents/MacOS/CXYActionWidget"
 /usr/bin/codesign --force --sign - --identifier local.cxy.actiondesk.opensource.widget --entitlements "$source_dir/Widget.entitlements" "$extension"
 /usr/bin/codesign --force --sign - --identifier local.cxy.actiondesk.opensource "$app"
 /usr/bin/codesign --verify --deep --strict "$app"

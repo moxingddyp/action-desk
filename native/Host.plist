@@ -6,13 +6,14 @@
 <key>CFBundleName</key><string>CXY 行动台 OSS</string>
 <key>CFBundleDisplayName</key><string>CXY 行动台 OSS</string>
 <key>CFBundlePackageType</key><string>APPL</string>
-<key>CFBundleVersion</key><string>15</string>
+<key>CFBundleVersion</key><string>16</string>
+<key>CFBundleIconFile</key><string>AppIcon</string>
 <key>CFBundleInfoDictionaryVersion</key><string>6.0</string>
 <key>CFBundleSupportedPlatforms</key><array><string>MacOSX</string></array>
-<key>CFBundleShortVersionString</key><string>1.0.0</string>
+<key>CFBundleShortVersionString</key><string>1.0.1</string>
 <key>LSMinimumSystemVersion</key><string>27.0</string>
 <key>LSUIElement</key><true/>
-<key>NSHumanReadableCopyright</key><string>CXY</string>
+<key>NSHumanReadableCopyright</key><string>Copyright © 2026 moxingddyp. MIT License.</string>
 <key>CFBundleURLTypes</key><array><dict>
 <key>CFBundleURLName</key><string>local.cxy.actiondesk.opensource.navigation</string>
 <key>CFBundleURLSchemes</key><array><string>cxy-actiondesk-oss</string></array>

@@ -8,4 +8,6 @@ Checks cover stable item IDs, mutually exclusive categories, duplicate and inval
 
 The source distribution has not completed a full WidgetKit installation, permission, and real-navigation test under a separate new user account. Unverified systems and hardware are not listed as verified support.
 
-Builds use local ad-hoc signing. Developer ID signing, notarization, and App Store distribution are not provided. Users prepare their own environment and choose how to install.
+Local DMG and ZIP review packages for 1.0.1 (build 16) contain the app, widget extension, multi-size app icon, fictional examples, and bilingual installation instructions. The app in each read-only mounted/extracted container matches the build file by file; signature integrity and container checks passed. Local debug-map paths were removed from the binaries, and targeted private-information/credential scans found no matches. The app depends on macOS system frameworks, not an end-user Xcode installation.
+
+The build is ad-hoc signed, not Developer ID–signed, notarized, or distributed through the App Store. Local Gatekeeper assessment explicitly rejects this review build; it has not passed default security acceptance. Signature integrity is not Apple verification of the developer's identity. Internet download, installation, first launch, and WidgetKit loading on another Mac have not been verified. Packages have not been uploaded and await user review. End-user installation and developer source builds are documented separately.
