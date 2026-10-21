@@ -22,11 +22,11 @@
 
 ## 下载安装（普通用户，无需Xcode）
 
-本地已准备1.0.1版DMG和ZIP，正在验收，**尚未上传**；当前GitHub仓库仍只提供源码。验收通过后的安装包将放在[Releases](https://github.com/moxingddyp/action-desk/releases)。
+下载 **1.0.1**：[DMG安装包](https://github.com/moxingddyp/action-desk/releases/download/v1.0.1/Action-Desk-1.0.1-macOS-arm64.dmg) · [ZIP压缩包](https://github.com/moxingddyp/action-desk/releases/download/v1.0.1/Action-Desk-1.0.1-macOS-arm64.zip) · [SHA256校验值](https://github.com/moxingddyp/action-desk/releases/download/v1.0.1/SHA256SUMS.txt)。全部下载见[Releases](https://github.com/moxingddyp/action-desk/releases)。
 
 适用Apple Silicon Mac、macOS 27.0或更高版本。下载DMG后将App拖入“应用程序”，或解压ZIP后拖入，再按[中英文安装说明](docs/INSTALL.zh-CN.md)配置已有清单并添加桌面小组件。普通用户不需要Xcode、Python或Homebrew。
 
-当前验收包使用本地临时签名，没有Developer ID签名或Apple公证。互联网下载后可能被系统拦截；具体状态及Apple官方打开方式见安装说明。尚未完成另一台Mac的互联网下载、安装和WidgetKit加载验收。
+本版使用本地临时签名，没有Developer ID签名或Apple公证。互联网下载后可能被系统拦截；Apple官方打开方式见安装说明。尚未完成另一台Mac的安装和WidgetKit加载验收。
 
 ## 源码构建（开发者）
 

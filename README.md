@@ -22,11 +22,11 @@ The categories are Priority, In Progress, Ready, and Conditional. The last three
 
 ## Download and Install (No Xcode Required)
 
-Local DMG and ZIP packages for version 1.0.1 are prepared for review and **have not been uploaded**. The GitHub repository currently provides source only. Approved packages will be published under [Releases](https://github.com/moxingddyp/action-desk/releases).
+Download version **1.0.1**: [DMG](https://github.com/moxingddyp/action-desk/releases/download/v1.0.1/Action-Desk-1.0.1-macOS-arm64.dmg) · [ZIP](https://github.com/moxingddyp/action-desk/releases/download/v1.0.1/Action-Desk-1.0.1-macOS-arm64.zip) · [SHA256 checksums](https://github.com/moxingddyp/action-desk/releases/download/v1.0.1/SHA256SUMS.txt). See [Releases](https://github.com/moxingddyp/action-desk/releases) for all downloads.
 
 For Apple Silicon Macs running macOS 27.0 or later: open the DMG and drag the app into Applications, or extract the ZIP and move the app there. Follow the [bilingual installation guide](docs/INSTALL.md) to configure your existing plan and add the desktop widget. End users do not need Xcode, Python, or Homebrew.
 
-The current review build is ad-hoc signed, not Developer ID–signed or Apple-notarized. macOS may block it after an internet download; see the installation guide for its status and Apple's official opening procedure. Internet download, installation, and WidgetKit loading on another Mac have not yet been verified.
+This version is ad-hoc signed, not Developer ID–signed or Apple-notarized. macOS may block it after an internet download; see the installation guide for Apple's official opening procedure. Installation and WidgetKit loading on another Mac have not yet been verified.
 
 ## Build from Source (Developers)
 
