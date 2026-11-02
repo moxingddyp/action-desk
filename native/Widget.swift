@@ -18,7 +18,7 @@ struct DeskProvider: TimelineProvider {
         let start = ProcessInfo.processInfo.systemUptime
         let snapshot = DeskStore.read(), prefs = DeskStore.prefs()
         completion(Timeline(entries: [DeskEntry(date: .now, snapshot: snapshot, prefs: prefs)], policy: .after(.now.addingTimeInterval(900))))
-        Logger(subsystem: "local.cxy.actiondesk.opensource", category: "interaction").notice("v15 timeline group=\(prefs.safeGroup, privacy: .private) selected=\(prefs.selected ?? "none", privacy: .private) providerMs=\((ProcessInfo.processInfo.systemUptime-start)*1000, privacy: .private)")
+        Logger(subsystem: "local.cxy.actiondesk", category: "interaction").notice("v15 timeline group=\(prefs.safeGroup, privacy: .public) selected=\(prefs.selected ?? "none", privacy: .public) providerMs=\((ProcessInfo.processInfo.systemUptime-start)*1000, privacy: .public)")
     }
 }
 let deskColors: [Color] = [Color(red: 0.25, green: 0.60, blue: 0.80), Color(red: 0.27, green: 0.65, blue: 0.58), Color(red: 0.48, green: 0.59, blue: 0.78), Color(red: 0.32, green: 0.65, blue: 0.56)]
@@ -70,7 +70,6 @@ struct TaskRing: View {
     var items: [WorkItem]
     var total: Int
     var selected: String?
-    var chiefThread: String = DeskStore.chief
     var colors: [Color] {
         RingColors.assign(items.count).map { RingColors.color($0) }
     }
@@ -118,7 +117,7 @@ struct TaskRing: View {
                     .position(x: region.rect.midX, y: region.rect.midY)
                     .accessibilityLabel("\(item.projectLabel)，\(item.title)，展开或收起")
                 }
-                Link(destination: DeskStore.link("thread", chiefThread)) {
+                Link(destination: DeskStore.link("thread", DeskStore.chief)) {
                     Text("\(total)").font(.system(size: 42, weight: .medium, design: .rounded)).monospacedDigit()
                         .foregroundStyle(.primary).frame(width: 88, height: 88).contentShape(Circle())
                 }.buttonStyle(.plain).accessibilityLabel("全部\(total)项，打开幕僚长")
@@ -153,7 +152,7 @@ struct DeskWidgetView: View {
                 dailyCalendar
                 Spacer(minLength: 0)
             } else if prefs.safeMode == "ring" {
-                TaskRing(items: visibleItems, total: Set(entry.snapshot?.items.map(\.id) ?? []).count, selected: selected?.id, chiefThread: entry.snapshot?.chiefThread ?? DeskStore.chief)
+                TaskRing(items: visibleItems, total: Set(entry.snapshot?.items.map(\.id) ?? []).count, selected: selected?.id)
                     .frame(width: 268, height: 268).frame(maxWidth: .infinity)
                 if let item = selected { detail(item) }
                 else {
@@ -282,8 +281,7 @@ struct DeskWidgetView: View {
     }
 }
 
-#if !DESIGN_PREVIEW
-@main
+#if !DESIGN_PREVIEW && !WORKBENCH_HOST
 struct ActionDeskWidget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: DeskStore.kind, provider: DeskProvider()) { DeskWidgetView(entry: $0) }
@@ -291,5 +289,9 @@ struct ActionDeskWidget: Widget {
             .description("现有工作安排。点击环段展开事项，点击详情进入原线程；圆心打开幕僚长。")
             .supportedFamilies([.systemExtraLargePortrait])
     }
+}
+@main
+struct WorkspaceWidgets: WidgetBundle {
+    var body: some Widget { ActionDeskWidget() }
 }
 #endif

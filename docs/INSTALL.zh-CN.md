@@ -1,33 +1,12 @@
-# 下载安装行动台
+# 安装与配置
 
-[English](INSTALL.md) · [简体中文](INSTALL.zh-CN.md)
+1. 从 Release 下载对应平台安装包，核对 SHA256SUMS.txt。
+2. Mac 将 CXY Workbench OSS.app 放入 Applications。包未经 Apple 公证；若系统阻止，请按 Apple 官方说明通过系统设置批准打开，不关闭系统安全检查。
+3. 将仓库 examples 复制到自己的资料目录。修改所有虚构项目和对话映射。
+4. 在 `~/Library/Application Support/CXY Action Desk OSS/config.json` 设置 `sourceDirectory` 和 `chiefThread`，示例见 examples/config.example.json。
+5. 启动应用，从 macOS 编辑小组件添加需要的卡片。系统决定组件实际刷新时间。
+6. 跨设备功能另按 service/README.md 部署服务，在同一配置目录创建 client.json；只向手机分发手机角色连接文件。
 
-## 安装要求
+更新时退出旧开源 App、替换 App，并保留配置与缓存。新组件初次安装、旧扩展进程回收和跨机器导航尚须实际环境验收，不以构建通过代替。安卓说明见 ../android/README.md。
 
-- Apple Silicon Mac，macOS 27.0或更高版本；本机验证环境为macOS 27.0.1。
-- 不需要Xcode、Python、Homebrew或命令行开发工具。
-- 跳转工作线程需要安装Codex并登录你有权访问对应线程的账号。
-- 界面和清单字段目前使用中文。它只展示既有Markdown安排，不自动创建或维护任务。
-
-## 安装App
-
-1. 下载DMG并打开，将`CXY Action Desk OSS.app`拖到`Applications`。也可解压ZIP，再将其中App拖到“应用程序”。不要直接从磁盘映像运行。
-2. 打开“应用程序”中的App。它是菜单栏应用，没有常驻主窗口；菜单栏出现四格图标即已启动。
-3. 当前验收包只有本地临时签名，没有Developer ID签名或Apple公证。互联网下载后的首次启动可能被macOS拦截；若你确认来源并决定继续，可按Apple官方说明在“系统设置 → 隐私与安全性”中对该App选择“仍要打开”。不需要关闭Gatekeeper或删除隔离属性。
-4. 不把出现安全拦截等同于成功安装。当前尚未验证另一台Mac从互联网下载后的完整安装及小组件加载流程。
-
-## 配置已有安排
-
-1. 安装包中的`Example Work Plan`包含虚构清单、项目索引、线程映射及`config.example.json`。先复制到自己的可写资料目录；不要覆盖已有工作安排。
-2. 在Finder按Shift–Command–G，打开`~/Library/Application Support/`，创建`CXY Action Desk OSS`文件夹。
-3. 将示例中的`config.example.json`复制到该文件夹并改名为`config.json`，使用纯文本编辑器编辑：`sourceDirectory`填已有清单目录的绝对路径，`chiefThread`填自己的Codex主线程UUID。保持有效JSON格式。
-4. 资料目录必须有`PROJECT.md`、`PROJECTS.md`和`tools/desktop-action-desk/thread-links.json`；将映射中的演示UUID替换为自己有权访问的工作线程。示例UUID不会真的跳转。
-5. 点击菜单栏图标，选择“刷新现有安排”。然后在桌面空白处右键 → 编辑小组件，添加“CXY行动台OSS”。具体字段见仓库的中英文“数据格式”文档。
-
-App每60秒检查一次源文件。小组件的实际刷新时机由WidgetKit调度。与另行安装的非OSS版使用不同App标识、配置目录和URL入口，不会读取它的真实清单。
-
-## 卸载与数据
-
-退出菜单栏App，移除桌面小组件，再将OSS版App移到废纸篓。资料目录不会删除；配置、偏好及显示缓存位于`~/Library/Application Support/CXY Action Desk OSS/`，由你决定是否保留。
-
-来源：[Apple：安全地打开Mac上的App](https://support.apple.com/102445)。
+Apple 官方打开说明：https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unknown-developer-mh40616/mac

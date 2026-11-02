@@ -1,0 +1,19 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/device_root" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:padding="12dp" android:background="@drawable/device_card_background">
+ <LinearLayout android:layout_width="match_parent" android:layout_height="30dp" android:gravity="center_vertical" android:orientation="horizontal">
+  <TextView android:text="设备状态" android:id="@+id/device_title" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:fontFamily="sans-serif-medium" android:textColor="#172C48" android:textSize="16sp" android:maxLines="1" android:ellipsize="end"/>
+  <TextView android:id="@+id/device_refresh" android:layout_width="40dp" android:layout_height="30dp" android:gravity="center" android:text="刷新" android:textColor="#176DCE" android:textSize="11sp"/>
+ </LinearLayout>
+ <TextView android:id="@+id/device_battery" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="#5A6C7F" android:textSize="10sp" android:maxLines="1" android:ellipsize="end"/>
+ <TextView android:id="@+id/device_link" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingTop="3dp" android:paddingBottom="4dp" android:textColor="#216BC5" android:textSize="10sp" android:maxLines="2" android:ellipsize="end"/>
+ <LinearLayout android:id="@+id/device_metrics" android:layout_width="match_parent" android:layout_height="34dp" android:gravity="center_vertical" android:orientation="horizontal">
+  <TextView android:text="CPU —" android:id="@+id/device_cpu" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:textColor="#203E63" android:textSize="12sp" android:maxLines="1" android:ellipsize="end"/>
+  <TextView android:text="GPU —" android:id="@+id/device_gpu" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:textColor="#203E63" android:textSize="12sp" android:maxLines="1" android:ellipsize="end"/>
+  <TextView android:text="内存 —" android:id="@+id/device_memory" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:textColor="#203E63" android:textSize="12sp" android:maxLines="1" android:ellipsize="end"/>
+ </LinearLayout>
+ <TextView android:text="↓ —/s    ↑ —/s" android:id="@+id/device_network" android:layout_width="match_parent" android:layout_height="26dp" android:gravity="center_vertical" android:textColor="#1680FF" android:textSize="13sp" android:maxLines="1" android:ellipsize="end"/>
+ <LinearLayout android:id="@+id/device_disks" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"/>
+ <TextView android:id="@+id/device_main" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:textColor="#314F6D" android:textSize="12sp" android:maxLines="14" android:ellipsize="end"/>
+ <TextView android:id="@+id/device_extra" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="#506B86" android:textSize="10sp" android:maxLines="6" android:ellipsize="end"/>
+ <TextView android:id="@+id/device_status" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="#62768A" android:textSize="9sp" android:maxLines="1" android:ellipsize="end"/>
+ <Chronometer android:id="@+id/device_age" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="#62768A" android:textSize="9sp" android:maxLines="1" android:ellipsize="end"/>
+</LinearLayout>

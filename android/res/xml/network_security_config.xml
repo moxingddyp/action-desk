@@ -1,0 +1,4 @@
+<network-security-config>
+ <!-- Dynamic user-imported endpoints are restricted by ConnectionSpec before requests. -->
+ <base-config cleartextTrafficPermitted="true"/>
+</network-security-config>

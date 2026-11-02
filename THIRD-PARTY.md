@@ -1,9 +1,8 @@
-# Action Desk Components
+# Components / 组件
 
-[English](THIRD-PARTY.md) · [简体中文](THIRD-PARTY.zh-CN.md)
+- macOS: Swift, SwiftUI, AppKit, WidgetKit, AppIntents, Foundation, CryptoKit, IOKit and Darwin. These are Apple platform tools/frameworks, not bundled third-party asset libraries.
+- Android: Android platform APIs, org.json, official SDK build tools and a JDK. SDK/JDK must be installed under their respective terms and are not redistributed in the source bundle.
+- Service: Python standard library and included original workbench modules.
+- Original icons: editable SwiftUI vector source in native/Assets/WorkbenchIcon.swift; no externally licensed icon pack is included.
 
-The project's Swift code, helper scripts, and original examples are licensed under [MIT](LICENSE), with attribution to `moxingddyp`.
-
-The application uses SwiftUI, AppKit, Foundation, WidgetKit, AppIntents, CryptoKit, OSLog, and system symbols. It does not distribute Apple SDKs, system frameworks, or font files. Users obtain Xcode and related tools separately under the applicable Apple licenses.
-
-The project does not include Zebar source, a web-based implementation, npm dependencies, third-party images, or model weights.
+Original project code is covered by the root MIT LICENSE. Build tools and operating systems retain their own licenses. / 原创源码采用根目录 MIT 许可；平台与构建工具保留各自许可。

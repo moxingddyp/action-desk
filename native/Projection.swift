@@ -142,6 +142,12 @@ enum DeskProjection {
         var snapshot = Snapshot(schemaVersion: 1, generatedAt: formatter.string(from: .now), revision: hash(String(decoding: payload, as: UTF8.self)), sourceRevision: hash(text), groups: DeskStore.groups.dropLast().map { name in WorkGroup(name: name, label: name, count: items.filter { $0.belongs(to: name) }.count) }, items: items, calendarEvents: events)
         snapshot.source = root.appendingPathComponent("PROJECT.md").path
         snapshot.sourceModifiedAt = formatter.string(from: modified); snapshot.chiefThread = DeskStore.chief
+        snapshot.activityEvidence = Dictionary(uniqueKeysWithValues: (sections(text)["行动活跃依据"] ?? []).compactMap { _, row -> (String, ActivityEvidence)? in
+            guard row.hasPrefix("|") else {return nil}
+            let values=cells(row)
+            guard values.count>=3,validItemID(values[0]) else {return nil}
+            return (values[0],ActivityEvidence(lastProgress:values[1],executionState:values[2]))
+        })
         return snapshot
     }
 }

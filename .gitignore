@@ -14,3 +14,12 @@ display.json
 *.pfx
 .ssh/
 .netrc
+__pycache__/
+*.pyc
+*.class
+*.jar
+*.apk
+*.jks
+*.keystore
+client.json
+private-state/

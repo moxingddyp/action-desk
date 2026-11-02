@@ -1,0 +1,1 @@
+<TextView xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/card_hit" android:layout_width="28dp" android:layout_height="28dp" android:layout_gravity="top|left" android:background="@drawable/widget_hit_feedback" android:defaultFocusHighlightEnabled="false" android:clickable="true" android:focusable="true" android:text=""/>

@@ -96,6 +96,7 @@ struct WorkItem: Codable, Identifiable {
     var ringLabel: String { projects.first.map { String($0.suffix(2)) } ?? "·" }
 }
 struct WorkGroup: Codable { var name: String; var label: String; var count: Int }
+struct ActivityEvidence: Codable { var lastProgress: String; var executionState: String }
 struct Snapshot: Codable {
     var schemaVersion: Int; var generatedAt: String; var revision: String
     var sourceRevision: String; var groups: [WorkGroup]; var items: [WorkItem]
@@ -103,6 +104,7 @@ struct Snapshot: Codable {
     var source: String? = nil
     var sourceModifiedAt: String? = nil
     var chiefThread: String? = nil
+    var activityEvidence: [String: ActivityEvidence]? = nil
     var generatedDate: Date {
         let formatter = ISO8601DateFormatter()
         formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]

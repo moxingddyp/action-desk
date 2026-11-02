@@ -23,7 +23,7 @@ struct DisplayAction: AppIntent {
             result = action == "select" ? (p.selected ?? "none") : p.safeGroup + ":" + p.safeMode
         }
         let elapsed = (ProcessInfo.processInfo.systemUptime - start) * 1000
-        Logger(subsystem: "local.cxy.actiondesk.opensource", category: "interaction").notice("v15 action=\(action, privacy: .private) target=\(value, privacy: .private) result=\(result, privacy: .private) changed=\(changed, privacy: .private) handlerMs=\(elapsed, privacy: .private)")
+        Logger(subsystem: "local.cxy.actiondesk", category: "interaction").notice("v15 action=\(action, privacy: .public) target=\(value, privacy: .public) result=\(result, privacy: .public) changed=\(changed, privacy: .public) handlerMs=\(elapsed, privacy: .public)")
         // WidgetKit automatically reloads the timeline after a button intent completes.
         return .result()
     }

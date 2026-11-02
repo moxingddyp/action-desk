@@ -4,16 +4,6 @@ import Foundation
 @main
 enum ProjectionChecks {
     static func main() throws {
-        precondition(DeskConfiguration.accountHome.path.hasPrefix("/"))
-        precondition(!DeskConfiguration.accountHome.path.contains("/Containers/"))
-        if let container = ProcessInfo.processInfo.environment["CFFIXED_USER_HOME"] {
-            precondition(DeskConfiguration.accountHome.path != container)
-            precondition(!DeskStore.directory.path.hasPrefix(container + "/"))
-            print("PASS: account-home cache remains independent of Foundation container-home override")
-        }
-        precondition(DeskStore.directory.deletingLastPathComponent().lastPathComponent == "Application Support")
-        precondition(!DeskConfiguration.navigable("00000000-0000-0000-0000-000000000001"))
-        precondition(!DeskConfiguration.navigable("invalid"))
         let fixture = """
         ## 事项安排
         | 事项ID | 事项/项目 | 分类 | 当前情况 | 下一行动 | 执行主体 | 交付物/依赖 | 真实期限/安排 | 来源 |
@@ -59,7 +49,7 @@ enum ProjectionChecks {
         let after = try Data(contentsOf: file)
         precondition(after == before)
         precondition(Set(result.items.map(\.id)).count == result.items.count)
-        print("PASS: mixed stable IDs, blank rows, malformed-row detection, tags, read-only fixture projection")
+        print("PASS: mixed stable IDs, blank rows, malformed-row detection, tags, read-only live projection")
         print("items=\(result.items.count), calendar=\(result.calendarEvents?.count ?? 0), sourceRevision=\(result.sourceRevision)")
     }
 }

@@ -111,16 +111,14 @@ enum LayoutPreview {
         ] {
             var prefs = DisplayPrefs()
             prefs.mode = mode; prefs.group = group
-            if group == "日常" { prefs.calendarMonth = "2030-05"; prefs.calendarDay = "2030-05-20" }
             var sample = snapshot
             if name == "double-ring" {
                 sample.items = (1...34).map { n in
                     var item = a[0]; item.id = "preview-\(n)"; item.projects = [String(format: "%04d", n)]; return item
                 }
                 prefs.group = "优先做"
-                for i in sample.items.indices { sample.items[i].tags = ["优先做", "正在做"] }
+                for i in sample.items.indices { sample.items[i].tags = ["优先做"] }
             }
-            sample.groups = DeskStore.groups.dropLast().map { name in WorkGroup(name: name, label: name, count: sample.items.filter { $0.belongs(to: name) }.count) }
             if expanded { prefs.selected = sample.items.first { $0.belongs(to: group) }?.id }
             NSApplication.shared.appearance = NSAppearance(named: dark ? .darkAqua : .aqua)
             let view = DeskWidgetView(entry: DeskEntry(date: .now, snapshot: sample, prefs: prefs))

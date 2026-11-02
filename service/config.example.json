@@ -1,0 +1,32 @@
+{
+  "bind": "127.0.0.1",
+  "port": 18766,
+  "stateDirectory": "./private-state",
+  "readToken": "REPLACE_WITH_RANDOM_READ_TOKEN",
+  "macToken": "REPLACE_WITH_RANDOM_MAC_TOKEN",
+  "phoneToken": "REPLACE_WITH_RANDOM_PHONE_TOKEN",
+  "actionsToken": "REPLACE_WITH_RANDOM_ACTIONS_TOKEN",
+  "linux": {
+    "enabled": false,
+    "mounts": [
+      "/"
+    ],
+    "lanInterface": null,
+    "peerAddresses": {},
+    "hostUnits": []
+  },
+  "windows": {
+    "enabled": false,
+    "sshAlias": ""
+  },
+  "gatewayAdapter": {
+    "command": [],
+    "serviceNames": [],
+    "proxyGroup": "WAN"
+  },
+  "pathProbes": {
+    "peers": {},
+    "command": [],
+    "routeContextCommand": []
+  }
+}

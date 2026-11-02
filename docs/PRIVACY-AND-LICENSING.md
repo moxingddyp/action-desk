@@ -1,11 +1,9 @@
-# Privacy and Licensing
+# Privacy and licensing / 隐私与许可
 
-[English](PRIVACY-AND-LICENSING.md) · [简体中文](PRIVACY-AND-LICENSING.zh-CN.md)
+Only generic application/service source, fictional examples and distributable installation assets are included. No real work plan, information feed, media, clinical/research records, account sessions, private keys, role tokens, machine paths or home-network configuration are distributed.
 
-Do not commit account records, browser profiles, cookies, API keys, tokens, private keys, SSH configurations, temporary signed URLs, private media, commenter identities, or model weights.
+Users provide their own source directory and connection configuration. The API requires role tokens; clients do not follow redirects while attaching credentials. The Mac public cache and URL namespaces are isolated from a private installation. Android signing/update behavior is documented in android/README.md. Local caches contain the user's own data and are not uploaded to GitHub by the application.
 
-Public examples must be original or separately cleared for redistribution. Inspect the actual files and history before publishing; ignore rules alone are not sufficient.
+Original code is MIT. Apple frameworks and Android SDK/JDK/build tools retain their licenses and are not bundled with source. No external scientific assets or media libraries are included.
 
-Original code is licensed under [MIT](../LICENSE), with attribution to `moxingddyp`. The full license retains its standard English text. Chinese explanations are for convenience and do not replace the license.
-
-Third-party frameworks and tools retain their own licenses. See [Components](../THIRD-PARTY.md).
+公开包仅含通用源码、虚构示例和允许分发的安装资产。真实清单、信息内容、采集媒体、科研/临床记录、会话、私钥、令牌、个人路径及家庭网络配置均不分发。使用者自行提供配置，原始业务资料与运行凭据不因本次发布删除或迁移。

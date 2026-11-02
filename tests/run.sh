@@ -17,3 +17,10 @@ xcrun swiftc -O -parse-as-library "$repo/native/Shared.swift" "$repo/native/Proj
 "$build/layout-checks" --check-only
 if [ -n "$preview" ]; then "$build/layout-checks" "$preview"; fi
 printf 'PASS: no installed application was launched or changed; test binaries: %s\n' "$build"
+
+xcrun swiftc -O -parse-as-library "$repo/native/WorkbenchClient.swift" "$repo/native/ConnectionChecks.swift" -o "$build/connection-checks"
+"$build/connection-checks"
+for check in TelemetryModelChecks PrivateLinkChecks; do
+ xcrun swiftc -O -parse-as-library "$repo/native/DeviceStore.swift" "$repo/native/TelemetryModels.swift" "$repo/native/$check.swift" -o "$build/$check"
+ "$build/$check"
+done

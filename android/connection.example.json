@@ -1,0 +1,5 @@
+{
+  "baseURL": "https://workbench.example.com",
+  "readToken": "REPLACE_WITH_YOUR_READ_TOKEN",
+  "phoneToken": "REPLACE_WITH_YOUR_PHONE_UPLOAD_TOKEN"
+}

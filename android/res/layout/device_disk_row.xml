@@ -1,0 +1,4 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingBottom="5dp">
+ <TextView android:id="@+id/disk_text" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="10sp" android:textColor="#53677C" android:maxLines="1" android:ellipsize="end"/>
+ <ProgressBar android:id="@+id/disk_progress" style="?android:attr/progressBarStyleHorizontal" android:layout_width="match_parent" android:layout_height="3dp" android:max="100" android:progressTint="#1680FF" android:progressBackgroundTint="#DCEAFF"/>
+</LinearLayout>

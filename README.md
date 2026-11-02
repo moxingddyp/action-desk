@@ -1,104 +1,51 @@
-# Action Desk | A Native macOS Desktop Widget for Codex
+# CXY Workbench OSS
 
 [English](README.md) · [简体中文](README.zh-CN.md)
 
-![Action Desk app icon](native/Assets.xcassets/AppIcon.appiconset/icon-128.png)
+Native macOS and Android clients for a Markdown work plan, device telemetry, and a shared information feed. This updates the original Action Desk repository to the unified workbench.
 
-Keep your existing work plan on your macOS desktop, then open the corresponding Codex thread directly from an item.
+## Download
 
-Action Desk provides ring, list, and calendar views. It reads your Markdown work plan instead of creating another task database.
+[Release v2.2.0](https://github.com/moxingddyp/action-desk/releases/tag/v2.2.0) includes an Apple Silicon macOS DMG/ZIP, Android APK, source bundle and SHA256 checksums. macOS requires 27.0 or later; Android requires 11 or later. Mac binaries are ad-hoc signed and are not notarized. Separate-machine installation has not been tested for this release.
+
+The macOS public app uses its own bundle IDs, `cxy-actiondesk-oss` / `cxy-devices-oss` URL schemes and OSS caches. It can coexist with a private installation. Android uses `com.cxy.workbench`; check the signing notes in [Android setup](android/README.md) before installing over another build.
 
 ## Features
 
-- A native WidgetKit desktop widget.
-- Colourful rings with up to two layers and two-digit project labels.
-- Click a segment to expand an item, click it again to collapse it, or select another segment to switch items.
-- Switch between ring and list views.
-- A calendar for scheduled activities.
-- Open an item's Codex thread from its details, or open your configured main thread from the centre of the ring.
-- Categories, deduplicated totals, and calendar entries generated from the same source.
+- A unified desktop window: actions, device cards, and a four-category information reader.
+- Ring/list/calendar views from one Markdown source, with optional navigation to your own Codex chats.
+- Independent macOS widgets for Mac, Windows, Linux, phone, and gateway.
+- Android device overview, themes, actions/calendar, information reader, widgets and explicit system-confirmed updates.
+- Optional role-authenticated Linux API; unavailable hardware or network evidence stays unavailable rather than becoming a fabricated reading.
 
-The categories are Priority, In Progress, Ready, and Conditional. The last three are mutually exclusive; Priority is an additional flag.
+## Configure
 
-## Download and Install (No Xcode Required)
+Follow [installation](docs/INSTALL.md). To use the local work plan, copy `examples/` to your own directory. Create `~/Library/Application Support/CXY Action Desk OSS/config.json` with your source directory and main Codex thread UUID. Fictional UUIDs in the examples cannot open a real chat.
 
-Download version **1.0.1**: [DMG](https://github.com/moxingddyp/action-desk/releases/download/v1.0.1/Action-Desk-1.0.1-macOS-arm64.dmg) · [ZIP](https://github.com/moxingddyp/action-desk/releases/download/v1.0.1/Action-Desk-1.0.1-macOS-arm64.zip) · [SHA256 checksums](https://github.com/moxingddyp/action-desk/releases/download/v1.0.1/SHA256SUMS.txt). See [Releases](https://github.com/moxingddyp/action-desk/releases) for all downloads.
+For shared telemetry/information, deploy the optional [service](service/README.md), then create a local `client.json` in the same macOS support directory. Import a phone-only connection file on Android. Connection examples contain placeholders; generate your own role tokens and never commit them. HTTPS is supported; unencrypted HTTP is limited to loopback or your encrypted tailnet address (100.64.0.0/10). Do not expose the service to the public internet.
 
-For Apple Silicon Macs running macOS 27.0 or later: open the DMG and drag the app into Applications, or extract the ZIP and move the app there. Follow the [bilingual installation guide](docs/INSTALL.md) to configure your existing plan and add the desktop widget. End users do not need Xcode, Python, or Homebrew.
+The information page consumes the `/v1/information` JSON API. Your own collector publishes the report; this distribution does not contain private source subscriptions, account sessions, scheduled model agents, or an information archive.
 
-This version is ad-hoc signed, not Developer ID–signed or Apple-notarized. macOS may block it after an internet download; see the installation guide for Apple's official opening procedure. Installation and WidgetKit loading on another Mac have not yet been verified.
+## Build and test
 
-## Build from Source (Developers)
-
-Xcode is needed only to compile or modify the source. Build and offline-test environment:
-
-- An Apple Silicon Mac.
-- macOS 27.0.1.
-- Xcode 27.1.
-- A deployment target of macOS 27.0, arm64.
-
-Other operating systems, Intel Macs, and Xcode versions have not been verified. Users are responsible for preparing their own environment.
-
-Complete Xcode's first launch and install its macOS development components. From the repository root, run:
+On Apple Silicon with Xcode 27.1 and macOS 27:
 
 ```sh
 DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer sh native/build.sh
-```
-
-The output is `CXY Action Desk OSS.app`. The script builds and locally signs the application; it does not install or launch it.
-
-Use `sh native/package.sh APP_PATH OUTPUT_DIRECTORY` to package a built app as DMG and ZIP files. This script does not install, launch, notarize, or upload the app. The original vector-drawn icon includes multi-size assets and its generation script in the source.
-
-## Configure and Use
-
-1. Copy the example work plan, project index, and thread mapping from `examples/` into your own data directory.
-2. Configure the data directory and your main Codex thread ID in `~/Library/Application Support/CXY Action Desk OSS/config.json`.
-3. Replace the example thread IDs with Codex threads you can access.
-4. Install and open the downloaded or self-built application.
-5. Add “CXY行动台OSS” through macOS Edit Widgets.
-
-Items without a mapped work thread fall back to the main thread. Example thread IDs are blocked from actual navigation.
-
-The host checks the source every 60 seconds. You can also request a refresh from its menu or run:
-
-```sh
-open 'cxy-actiondesk-oss://refresh'
-```
-
-WidgetKit controls when the widget is actually refreshed.
-
-## Data and Integration Boundaries
-
-Progress remains in the source Markdown files. The application stores only display caches and view preferences; it does not change task status.
-
-This project does not include email, WeChat, recording intake, model calls, or background agents. It does not automatically read Codex conversations.
-
-The process maintaining your work plan is responsible for the 48-hour In Progress rule. Action Desk displays the categories already present in that plan.
-
-The current interface and parts of the input format use Chinese. English documentation does not imply an English-localized interface or input format.
-
-## Tests
-
-```sh
 sh tests/run.sh --check-only
+sh native/package.sh /tmp/CXY-Workbench-OSS-Build/CXY\ Workbench\ OSS.app /tmp/workbench-packages
 ```
 
-Completed checks include an independent Release build, signature verification, data projection, categories, ring hit regions, view switching, and calendar logic.
+These scripts build/package only. They never install or launch the application. See `android/README.md` for Android builds and `service/README.md` for service tests.
 
-A complete first-time WidgetKit installation, permission, and real-thread navigation test under a separate user account has not been completed for this source distribution. All examples and previews use fictional data.
+## Upgrade from 1.0.1
 
-## Documentation
+The macOS public bundle ID and action cache are retained. Quit the old public app, replace it with the new one, keep your `config.json`, and reselect/add widgets if macOS requests it. The application is now named CXY Workbench OSS; device widgets use a separate OSS cache. Optional cross-device features require your own service configuration. The release does not migrate private installations or change any network settings.
 
-- [Download and installation](docs/INSTALL.md)
-- [Data format](docs/DATA-FORMAT.md)
-- [Environment and verification](docs/ACCEPTANCE.md)
-- [Components](THIRD-PARTY.md)
-- [Privacy and licensing](docs/PRIVACY-AND-LICENSING.md)
+See [changelog](CHANGELOG.md), [data format](docs/DATA-FORMAT.md), [verification](docs/ACCEPTANCE.md), [privacy](docs/PRIVACY-AND-LICENSING.md) and [components](THIRD-PARTY.md).
 
 ## License
 
-Original project code is licensed under [MIT](LICENSE).
+Original code: [MIT](LICENSE). Author: [moxingddyp](https://github.com/moxingddyp). Apple/Android tools retain their licenses. This is an independent project, not an official Apple, Google, or OpenAI product.
 
-Author: [moxingddyp](https://github.com/moxingddyp).
-
-Third-party frameworks and tools retain their own licenses. Action Desk is an independent project, not an official OpenAI or Apple product.
+For an existing public installation, `native/install-workbench.py` provides validation, backup, and targeted stale-widget reconciliation; use `--help` and review the dry run before `--apply`. It only targets the public OSS application.

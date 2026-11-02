@@ -1,13 +1,7 @@
-# Action Desk Environment and Verification
+# Verification scope
 
-[English](ACCEPTANCE.md) · [简体中文](ACCEPTANCE.zh-CN.md)
+The public release is built independently on Apple Silicon, macOS 27.0.1 and Xcode 27.1. Checks cover the Mac host/two extension signatures, matching versions and AppIntents metadata; read-only Markdown projection, categories, ring hit regions, selection and calendar; configured origin restrictions; telemetry staleness and optional fields. Service tests use synthetic fixtures and a local loopback instance. Android build/model checks are described in android/README.md.
 
-An independent Release build, local signature verification, and native offline tests were completed on macOS 27.0.1 with Apple Silicon and Xcode 27.1.
+Source and distributable contents are scanned for private identities/paths/network configuration and secret signatures. Remote commit/tag and downloaded release hashes must match reviewed artifacts. Pattern scanning is not a proof of every possible unknown secret being absent.
 
-Checks cover stable item IDs, mutually exclusive categories, duplicate and invalid data, 4,000 preference-state transitions, hit regions and colour adjacency for 1–34 ring segments, item expansion and selection, dates, and calendar logic. The example plan contains four fictional items and two fictional calendar entries; eight native previews were also generated.
-
-The source distribution has not completed a full WidgetKit installation, permission, and real-navigation test under a separate new user account. Unverified systems and hardware are not listed as verified support.
-
-Local DMG and ZIP review packages for 1.0.1 (build 16) contain the app, widget extension, multi-size app icon, fictional examples, and bilingual installation instructions. The app in each read-only mounted/extracted container matches the build file by file; signature integrity and container checks passed. Local debug-map paths were removed from the binaries, and targeted private-information/credential scans found no matches. The app depends on macOS system frameworks, not an end-user Xcode installation.
-
-The build is ad-hoc signed, not Developer ID–signed, notarized, or distributed through the App Store. Local Gatekeeper assessment explicitly rejects this review build; it has not passed default security acceptance. Signature integrity is not Apple verification of the developer's identity. Internet download, installation, first launch, and WidgetKit loading on another Mac have not been verified. The user approved publishing these packages as version 1.0.1 with these limitations disclosed. End-user installation and developer source builds are documented separately.
+Not repeated for the public configuration: first installation/WidgetKit loading on another Mac, real chat navigation, complete multi-device service setup, Android real-phone upgrade, long-running background/collector behavior and real network-path observation. Fictional fixtures do not establish these results. Builds/releases do not install over the user's software, restart current services, or change networking.
