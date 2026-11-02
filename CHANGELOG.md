@@ -1,5 +1,11 @@
 # Changelog / 更新记录
 
+## Architecture documentation — 2026-11-02
+
+Add matched English/Chinese system/network architecture, editable bilingual diagrams, data/permission boundaries and links to existing configuration templates. Application code, version, binaries and 2.2.0 assets are unchanged.
+
+补齐对应中英文系统/网络架构、可编辑双语图示、数据与权限边界及现有配置模板入口；应用代码、版本、二进制和2.2.0附件不变。
+
 ## 2.2.0 — 2026-11-02
 
 - Update the public Mac client from the unified workbench source: actions, devices, information, preferences and independent device widgets.

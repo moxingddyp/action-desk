@@ -18,6 +18,10 @@ The macOS public app uses its own bundle IDs, `cxy-actiondesk-oss` / `cxy-device
 - Android device overview, themes, actions/calendar, information reader, widgets and explicit system-confirmed updates.
 - Optional role-authenticated Linux API; unavailable hardware or network evidence stays unavailable rather than becoming a fabricated reading.
 
+## System and network architecture
+
+The [architecture guide](docs/ARCHITECTURE.md) covers client/server roles, data flows, authorization boundaries, the Linux/virtual-gateway/private-overlay/primary-standby relationships and configuration entry points. A [Chinese counterpart](docs/ARCHITECTURE.zh-CN.md) is included. Diagrams use generic roles and distinguish public code from external information processing and network infrastructure.
+
 ## Configure
 
 Follow [installation](docs/INSTALL.md). To use the local work plan, copy `examples/` to your own directory. Create `~/Library/Application Support/CXY Action Desk OSS/config.json` with your source directory and main Codex thread UUID. Fictional UUIDs in the examples cannot open a real chat.

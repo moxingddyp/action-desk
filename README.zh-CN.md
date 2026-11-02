@@ -18,6 +18,10 @@ Mac 开源版保留独立的应用标识、OSS 缓存及 `cxy-actiondesk-oss`、
 - 安卓设备总览、主题、事项/日历、信息阅读、小组件和需系统确认的应用更新。
 - 可选 Linux 角色鉴权 API；缺测与过期明确显示，不根据在线状态编造硬件或路径指标。
 
+## 系统与网络架构
+
+[完整中文架构说明](docs/ARCHITECTURE.zh-CN.md)包含各端职责、数据流、认证写入边界、Linux/虚拟网关/私网/主备出口关系及配置入口。对应[英文版](docs/ARCHITECTURE.md)随附；图中仅使用通用角色。公开代码与外部信息处理、网络基础设施分别标明。
+
 ## 配置
 
 按[安装说明](docs/INSTALL.zh-CN.md)复制 `examples/` 到自己的资料目录。在 `~/Library/Application Support/CXY Action Desk OSS/config.json` 填入资料路径和自己的主对话 UUID；示例虚构 UUID 不会打开真实对话。
